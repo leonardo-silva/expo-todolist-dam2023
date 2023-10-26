@@ -1,24 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, SafeAreaView } from 'react-native';
+
+import { Home } from './src/screens/Home';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>React Native é massa!!!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle='light-content' />
+      <Home/>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: 'bold'
-  }
-});
