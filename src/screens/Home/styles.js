@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#121015',
   },
   text: {
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: 'bold',
     color: 'white',
     margin: 20,
