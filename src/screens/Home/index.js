@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlashList } from "@shopify/flash-list";
 
 import { styles } from './styles';
 
@@ -36,9 +37,10 @@ export function Home() {
         Minhas Tarefas
       </Text>
 
-      <FlatList
+      <FlashList
         data={tasks}
         keyExtractor={item => item}
+        estimatedItemSize={20}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.buttonTask}>
             <Text style={styles.textTask}>
