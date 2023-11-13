@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './styles';
 
@@ -9,8 +9,6 @@ export function Home() {
 
   function handleAddNewTask() {
     setTasks(oldState => [...oldState, newTask]);
-
-    console.log(tasks);
   }
 
   return (
@@ -37,6 +35,18 @@ export function Home() {
       <Text style={styles.text}>
         Minhas Tarefas
       </Text>
+
+      <FlatList
+        data={tasks}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.buttonTask}>
+            <Text style={styles.textTask}>
+              {item}
+            </Text>
+          </TouchableOpacity>          
+        )}
+      />
     </View>
   );
 }
