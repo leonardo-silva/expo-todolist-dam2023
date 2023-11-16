@@ -23,6 +23,12 @@ export function Home() {
     setTasks(oldState => [...oldState, data]);
   }
 
+  function handleRemoveTask(id: string) {
+    setTasks(oldState => oldState.filter(
+      task => task.id != id
+    ))
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
@@ -51,7 +57,10 @@ export function Home() {
         keyExtractor={item => item.id}
         estimatedItemSize={20}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.buttonTask}>
+          <TouchableOpacity 
+            style={styles.buttonTask}
+            onPress={() => handleRemoveTask(item.id)}
+          >
             <Text style={styles.textTask}>
               {item.name}
             </Text>
