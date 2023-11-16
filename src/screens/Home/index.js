@@ -3,6 +3,7 @@ import { FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'r
 import { FlashList } from "@shopify/flash-list";
 
 import { styles } from './styles';
+import { Button } from '../../components/Button';
 
 export function Home() {
   const [newTask, setNewTask] = useState("");
@@ -24,15 +25,13 @@ export function Home() {
         placeholderTextColor='#555555'
         onChangeText={setNewTask}
       />
-      <TouchableOpacity 
-        style={styles.button}
-        activeOpacity={0.7}
+
+      <Button 
         onPress={handleAddNewTask}
-      >
-        <Text style={styles.buttonText}>
-          Adicionar
-        </Text>
-      </TouchableOpacity>
+        activeOpacity={0.7}
+        title='Adicionar tarefa'
+      />
+
       <Text style={styles.text}>
         Minhas Tarefas
       </Text>
