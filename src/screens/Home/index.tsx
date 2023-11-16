@@ -1,16 +1,26 @@
 import { useState } from 'react';
-import { FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { FlashList } from "@shopify/flash-list";
 
 import { styles } from './styles';
 import { Button } from '../../components/Button';
 
+interface TaskData {
+  id: string;
+  name: string;
+}
+
 export function Home() {
   const [newTask, setNewTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<TaskData[]>([]);
 
   function handleAddNewTask() {
-    setTasks(oldState => [...oldState, newTask]);
+    const data: TaskData = {
+      id: String((new Date).getTime()),
+      name: newTask
+    }
+
+    setTasks(oldState => [...oldState, data]);
   }
 
   return (
@@ -38,12 +48,12 @@ export function Home() {
 
       <FlashList
         data={tasks}
-        keyExtractor={item => item}
+        keyExtractor={item => item.id}
         estimatedItemSize={20}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.buttonTask}>
             <Text style={styles.textTask}>
-              {item}
+              {item.name}
             </Text>
           </TouchableOpacity>          
         )}
