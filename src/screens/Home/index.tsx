@@ -4,6 +4,7 @@ import { FlashList } from "@shopify/flash-list";
 
 import { styles } from './styles';
 import { Button } from '../../components/Button';
+import { TaskCard } from '../../components/TaskCard';
 
 interface TaskData {
   id: string;
@@ -57,14 +58,10 @@ export function Home() {
         keyExtractor={item => item.id}
         estimatedItemSize={20}
         renderItem={({ item }) => (
-          <TouchableOpacity 
-            style={styles.buttonTask}
+          <TaskCard 
+            title={item.name}
             onPress={() => handleRemoveTask(item.id)}
-          >
-            <Text style={styles.textTask}>
-              {item.name}
-            </Text>
-          </TouchableOpacity>          
+          />
         )}
       />
     </View>
